@@ -15,7 +15,8 @@ while True:
 3. Prestar libro
 4. Devolver libro
 5. Mostrar estado
-6. Salir
+6. Excepciones técnicas
+7. Salir
 
 ===========================================
 """)
@@ -80,12 +81,42 @@ while True:
 
         biblioteca.mostrar_estado()
 
-    # SALIR
+    # EXCEPCIONES TÉCNICAS
     elif opcion == "6":
+
+        print("\n========== EXCEPCIONES TÉCNICAS ==========\n")
+
+        # ATTRIBUTE ERROR
+        try:
+
+            libro = Libro("Python", "Juan", "111")
+            print(libro.precio)
+
+        except AttributeError as e:
+            print("AttributeError:", e)
+
+        # INDEX ERROR
+        try:
+
+            lista = [1]
+            print(lista[10])
+
+        except IndexError as e:
+            print("IndexError:", e)
+
+        # MODULE NOT FOUND ERROR
+        try:
+
+            __import__("modulo_falso")
+
+        except ModuleNotFoundError as e:
+            print("ModuleNotFoundError:", e)
+
+    # SALIR
+    elif opcion == "7":
 
         print("Programa finalizado")
         break
 
     else:
         print("Opción inválida")
-
